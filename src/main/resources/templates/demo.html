@@ -5,8 +5,29 @@
 </head>
 <body>
 <h1 th:text="${message}">Placeholder message</h1>
+
+<div th:object="${person}">
+    <p>Name: <span th:text="*{name}">John Doe</span></p>
+    <p>Age: <span th:text="*{age}">30</span></p>
+</div>
+
+<h2 th:text="#{demo.items.title}">Items List</h2>
 <ul>
     <li th:each="item : ${items}" th:text="${item}">Placeholder item</li>
 </ul>
+
+<div th:if="${showLink}">
+    <a th:href="@{https://www.google.com(q=${searchQuery})}">Google Search</a>
+</div>
+
+<div th:unless="${showLink}">
+    <p>No link available</p>
+</div>
+
+<div th:id="|container-${containerId}|">
+    This is a container with ID: <span th:text="${containerId}">1</span>
+</div>
+
+<p>The total price is [[${totalPrice}]]</p>
 </body>
 </html>
